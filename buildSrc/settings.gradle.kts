@@ -2,8 +2,6 @@
 
 import java.net.URI
 
-rootProject.name = "converter"
-
 pluginManagement {
     repositories {
         mavenCentral()
@@ -11,7 +9,14 @@ pluginManagement {
     }
 }
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 dependencyResolutionManagement {
+    versionCatalogs {
+        create("libs") {
+            from(files("../gradle/libs.versions.toml"))
+        }
+    }
     repositories {
         mavenCentral()
         maven { url = URI("https://jitpack.io") }
