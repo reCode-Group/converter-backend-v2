@@ -1,10 +1,9 @@
 @file:Suppress("UnstableApiUsage")
 
-import java.net.URI
-
 rootProject.name = "converter"
 
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         mavenCentral()
         gradlePluginPortal()
@@ -14,6 +13,8 @@ pluginManagement {
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
-        maven { url = URI("https://jitpack.io") }
+        maven(url = "https://jitpack.io")
     }
 }
+
+include(":app")
