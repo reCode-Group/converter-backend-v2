@@ -1,15 +1,11 @@
 @file:Suppress("UnstableApiUsage")
 
-import java.net.URI
-
 pluginManagement {
     repositories {
         mavenCentral()
         gradlePluginPortal()
     }
 }
-
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 dependencyResolutionManagement {
     versionCatalogs {
@@ -19,7 +15,7 @@ dependencyResolutionManagement {
     }
     repositories {
         mavenCentral()
-        maven { url = URI("https://jitpack.io") }
+        maven(url = "https://jitpack.io")
     }
 }
 
