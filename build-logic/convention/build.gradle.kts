@@ -25,9 +25,3 @@ dependencies {
     implementation(libs.plugins.detekt.asLibrary())
     implementation(projects.core)
 }
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-}
