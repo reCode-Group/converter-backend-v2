@@ -6,7 +6,7 @@ on:
 
 jobs:
   checkstyle-job:
-    name: Unit tests | PR
+    name: Testing | PR
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
@@ -17,5 +17,5 @@ jobs:
           java-version: '17'
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
-      - name: Unit testing
+      - name: Run tests
         run: ./gradlew test

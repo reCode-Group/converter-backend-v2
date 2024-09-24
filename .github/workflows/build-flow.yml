@@ -6,7 +6,7 @@ on:
 
 jobs:
   checkstyle-job:
-    name: Unit tests | PR
+    name: Build artifacts | PR
     runs-on: ubuntu-latest
     steps:
       - name: Checkout sources
