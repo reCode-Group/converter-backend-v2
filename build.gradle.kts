@@ -1,0 +1,3 @@
+plugins {
+    // CI plugins here
+}

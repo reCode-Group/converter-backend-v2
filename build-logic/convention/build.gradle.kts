@@ -9,6 +9,7 @@ fun Provider<PluginDependency>.asLibrary(): String = with(this.get()) {
         "org.jetbrains.kotlin.plugin.jpa" -> "org.jetbrains.kotlin:kotlin-noarg"
         "org.springframework.boot" -> "org.springframework.boot:spring-boot-gradle-plugin"
         "io.spring.dependency-management" -> "io.spring.gradle:dependency-management-plugin"
+        "io.gitlab.arturbosch.detekt" -> "io.gitlab.arturbosch.detekt:detekt-gradle-plugin"
         else -> throw IllegalArgumentException("No matching plugin id: $pluginId")
     }.let { "$it:$version" }
 }
@@ -21,4 +22,6 @@ dependencies {
     implementation(libs.plugins.kotlin.jpa.asLibrary())
     implementation(libs.plugins.spring.boot.asLibrary())
     implementation(libs.plugins.spring.di.asLibrary())
+    implementation(libs.plugins.detekt.asLibrary())
+    implementation(projects.core)
 }
