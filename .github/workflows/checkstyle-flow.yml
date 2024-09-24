@@ -1,0 +1,17 @@
+name: checkstyle-flow.yml
+on:
+  pull_request:
+    branches:
+      - trunk
+
+jobs:
+  checkstyle-job:
+    name: Checkstyle | PR
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v4
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+    - name: Build with Gradle
+      run: ./gradlew detekt
