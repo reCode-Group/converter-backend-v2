@@ -1,0 +1,30 @@
+name: unit-test-flow.yml
+on:
+  pull_request:
+    branches:
+      - trunk
+
+jobs:
+  checkstyle-job:
+    name: Checkstyle | PR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'oracle'
+          java-version: '17'
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+      - name: Unit testing
+        run: ./gradlew test
+      - name: Zip test report
+        run: |
+          cd build/reports;
+          zip -r report.zip reports
+      - name: Upload logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: report.zip
+          path: build/reports/report.zip
