@@ -1,0 +1,26 @@
+name: checkstyle-flow.yml
+on:
+  pull_request:
+    branches:
+      - trunk
+
+jobs:
+  checkstyle-job:
+    name: Checkstyle | PR
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with:
+        distribution: 'oracle'
+        java-version: '17'
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v3
+    - name: Run checkstyle
+      run: ./gradlew detekt
+    - name: Upload merged output
+      uses: actions/upload-artifact@v4
+      with:
+        name: merge.xml
+        path: build/reports/detekt/merge.xml
