@@ -19,12 +19,3 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
       - name: Unit testing
         run: ./gradlew test
-      - name: Zip test report
-        run: |
-          cd build/reports;
-          zip -r report.zip reports
-      - name: Upload logs
-        uses: actions/upload-artifact@v4
-        with:
-          name: report.zip
-          path: build/reports/report.zip
